@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>旅遊趣 - 你的夢想旅行</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #1f9d8a;
+        --primary-dark: #146d63;
+        --accent: #ffb703;
+        --light-bg: #f7f9fc;
+        --dark-text: #1d2736;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Microsoft JhengHei", Arial, sans-serif;
+        background: var(--light-bg);
+        color: var(--dark-text);
+      }
+
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.45)),
+          url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        min-height: 620px;
+      }
+
+      .navbar {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+      }
+
+      .section-title {
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .card {
+        border: none;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+      }
+
+      .destination-card img {
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .price-tag {
+        background: rgba(31, 157, 138, 0.12);
+        color: var(--primary-dark);
+        font-weight: 700;
+        border-radius: 999px;
+        padding: 8px 14px;
+      }
+
+      .booking-box {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .dark-mode {
+        background: #0f172a;
+        color: #e2e8f0;
+      }
+
+      .dark-mode .card,
+      .dark-mode .booking-box,
+      .dark-mode .navbar {
+        background: #1e293b;
+        color: #e2e8f0;
+      }
+
+      .dark-mode .text-muted {
+        color: #cbd5e1 !important;
+      }
+
+      footer {
+        background: #12343b;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand fw-bold" href="#home">旅遊趣</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="#about">關於</a></li>
+              <li class="nav-item"><a class="nav-link" href="#destinations">目的地</a></li>
+              <li class="nav-item"><a class="nav-link" href="#packages">套餐</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">聯絡</a></li>
+            </ul>
+            <button id="themeBtn" class="btn btn-outline-light ms-3">深色模式</button>
+          </div>
+        </div>
+      </nav>
+
+      <div id="home" class="container d-flex align-items-center h-100 pt-5">
+        <div class="row w-100 align-items-center">
+          <div class="col-lg-7 text-white py-5">
+            <span class="badge bg-warning text-dark mb-3">限時優惠</span>
+            <h1 class="display-4 fw-bold">享受一場不一樣的旅程</h1>
+            <p class="lead mt-3">
+              從海灘到山景，從城市到自然風光，我們為你規劃最輕鬆、最愉快的旅行體驗。
+            </p>
+            <div class="d-flex gap-3 mt-4">
+              <a href="#destinations" class="btn btn-primary btn-lg">立即探索</a>
+              <button id="bookNowBtn" class="btn btn-outline-light btn-lg">預訂行程</button>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="booking-box p-4">
+              <h4 class="fw-bold mb-3">快速預訂</h4>
+              <form id="bookingForm">
+                <div class="mb-3">
+                  <label class="form-label">目的地</label>
+                  <select class="form-select">
+                    <option>日本</option>
+                    <option>韓國</option>
+                    <option>泰國</option>
+                    <option>夏威夷</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">出發日期</label>
+                  <input type="date" class="form-control" />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">旅遊人數</label>
+                  <input type="number" class="form-control" value="2" min="1" />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">提交預訂</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="about" class="py-5">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <h2 class="section-title">為每一位旅行者打造專屬體驗</h2>
+              <p class="text-muted">
+                我們相信旅行不只是看風景，而是帶著放鬆與感動回家。從機票、住宿到當地導覽，我們都用心安排，讓你輕鬆享受每一段旅程。
+              </p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">專業旅遊顧問推薦行程</li>
+                <li class="list-group-item">安心透明的價格與服務</li>
+                <li class="list-group-item">適合家庭、情侶與好友旅遊</li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <img
+                src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80"
+                class="img-fluid rounded-4 shadow"
+                alt="旅行風景"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="destinations" class="py-5 bg-white">
+        <div class="container">
+          <div class="text-center mb-4">
+            <h2 class="section-title">熱門目的地</h2>
+            <p class="text-muted">探索世界上最受歡迎的旅遊景點</p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-4">
+              <article class="card destination-card h-100">
+                <img src="https://images.unsplash.com/photo-1493558103817-58b2924b5713?auto=format&fit=crop&w=800&q=80" alt="東京" />
+                <div class="card-body">
+                  <h5 class="card-title">東京</h5>
+                  <p class="text-muted">時尚、科技與美食的完美結合。</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="price-tag">NT$ 18,800 起</span>
+                    <button class="btn btn-sm btn-outline-primary">查看</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-md-4">
+              <article class="card destination-card h-100">
+                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80" alt="巴黎" />
+                <div class="card-body">
+                  <h5 class="card-title">巴黎</h5>
+                  <p class="text-muted">浪漫城市，適合慢慢享受生活。</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="price-tag">NT$ 21,500 起</span>
+                    <button class="btn btn-sm btn-outline-primary">查看</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="col-md-4">
+              <article class="card destination-card h-100">
+                <img src="https://images.unsplash.com/photo-1505761671935-60e392f9a4db?auto=format&fit=crop&w=800&q=80" alt="巴厘島" />
+                <div class="card-body">
+                  <h5 class="card-title">巴厘島</h5>
+                  <p class="text-muted">陽光、沙灘與海浪，度假首選。</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="price-tag">NT$ 16,900 起</span>
+                    <button class="btn btn-sm btn-outline-primary">查看</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="packages" class="py-5">
+        <div class="container">
+          <div class="text-center mb-4">
+            <h2 class="section-title">精選套餐</h2>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card h-100 p-3">
+                <h4>經典遊</h4>
+                <p class="text-muted">適合第一次出國旅遊</p>
+                <h3 class="text-primary">NT$ 9,900</h3>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">機票＋住宿</li>
+                  <li class="list-group-item">城市導覽</li>
+                  <li class="list-group-item">早餐提供</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card h-100 p-3 border border-primary border-2">
+                <span class="badge bg-primary mb-2">最熱門</span>
+                <h4>雙人蜜月</h4>
+                <p class="text-muted">浪漫旅行的最佳選擇</p>
+                <h3 class="text-primary">NT$ 18,500</h3>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">豪華住宿</li>
+                  <li class="list-group-item">海島活動</li>
+                  <li class="list-group-item">浪漫晚餐</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="card h-100 p-3">
+                <h4>家庭旅遊</h4>
+                <p class="text-muted">輕鬆愉快享受親子時光</p>
+                <h3 class="text-primary">NT$ 14,800</h3>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">家庭房型</li>
+                  <li class="list-group-item">景點門票</li>
+                  <li class="list-group-item">專車接送</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="py-5 mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>旅遊趣</h4>
+            <p>讓每一次旅行都充滿驚喜與美好回憶。</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p>Email: hello@travelfun.com</p>
+            <p>電話: 02-1234-5678</p>
+          </div>
+        </div>
+        <div class="border-top border-light mt-3 pt-3 text-center small">
+          © <span id="year"></span> 旅遊趣 All Rights Reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      document.getElementById('themeBtn').addEventListener('click', function () {
+        document.body.classList.toggle('dark-mode');
+        this.textContent = document.body.classList.contains('dark-mode') ? '淺色模式' : '深色模式';
+      });
+
+      document.getElementById('bookNowBtn').addEventListener('click', function () {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+      });
+
+      document.getElementById('bookingForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        alert('預訂資料已提交，我們將盡快與您聯繫！');
+      });
+    </script>
+  </body>
+</html>

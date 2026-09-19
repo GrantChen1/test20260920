@@ -35,7 +35,7 @@
 
       .navbar {
         background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(8px);        https://GrantChen1.github.io/test20260920/
+        backdrop-filter: blur(8px);
       }
 
       .section-title {
@@ -76,13 +76,19 @@
 
       .dark-mode .card,
       .dark-mode .booking-box,
-      .dark-mode .navbar {
+      .dark-mode .navbar,
+      .dark-mode section.bg-white {
         background: #1e293b;
         color: #e2e8f0;
       }
 
       .dark-mode .text-muted {
         color: #cbd5e1 !important;
+      }
+
+      .dark-mode .price-tag {
+        background: rgba(226, 232, 240, 0.12);
+        color: #7fe0cf;
       }
 
       footer {
@@ -140,7 +146,7 @@
                 </div>
                 <div class="mb-3">
                   <label class="form-label">出發日期</label>
-                  <input type="date" class="form-control" />
+                  <input type="date" class="form-control" id="departDate" />
                 </div>
                 <div class="mb-3">
                   <label class="form-label">旅遊人數</label>
@@ -196,7 +202,7 @@
                   <p class="text-muted">時尚、科技與美食的完美結合。</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <span class="price-tag">NT$ 18,800 起</span>
-                    <button class="btn btn-sm btn-outline-primary">查看</button>
+                    <button class="btn btn-sm btn-outline-primary view-package-btn">查看</button>
                   </div>
                 </div>
               </article>
@@ -210,7 +216,7 @@
                   <p class="text-muted">浪漫城市，適合慢慢享受生活。</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <span class="price-tag">NT$ 21,500 起</span>
-                    <button class="btn btn-sm btn-outline-primary">查看</button>
+                    <button class="btn btn-sm btn-outline-primary view-package-btn">查看</button>
                   </div>
                 </div>
               </article>
@@ -224,7 +230,7 @@
                   <p class="text-muted">陽光、沙灘與海浪，度假首選。</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <span class="price-tag">NT$ 16,900 起</span>
-                    <button class="btn btn-sm btn-outline-primary">查看</button>
+                    <button class="btn btn-sm btn-outline-primary view-package-btn">查看</button>
                   </div>
                 </div>
               </article>
@@ -306,13 +312,21 @@
     <script>
       document.getElementById('year').textContent = new Date().getFullYear();
 
+      document.getElementById('departDate').min = new Date().toISOString().split('T')[0];
+
+      document.querySelectorAll('.view-package-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          document.getElementById('packages').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
       document.getElementById('themeBtn').addEventListener('click', function () {
         document.body.classList.toggle('dark-mode');
         this.textContent = document.body.classList.contains('dark-mode') ? '淺色模式' : '深色模式';
       });
 
       document.getElementById('bookNowBtn').addEventListener('click', function () {
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        document.querySelector('.booking-box').scrollIntoView({ behavior: 'smooth' });
       });
 
       document.getElementById('bookingForm').addEventListener('submit', function (event) {
